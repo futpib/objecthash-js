@@ -9,7 +9,6 @@ const INT_STRING = 'i'
 const FLOAT_STRING = 'f'
 const LIST_STRING = 'l'
 const DICT_STRING = 'd'
-const REDACTED_REGEX = /^\*\*REDACTED\*\*[0-9a-f]{64}$/i
 
 function hash(str, buf) {
   const bufToHash = Buffer.concat([
@@ -88,9 +87,7 @@ function hashDict (obj) {
 }
 
 function objectHash (obj) {
-  if (typeof obj === 'string' && REDACTED_REGEX.test(obj)) {
-    return Buffer.from(obj.slice(12), 'hex')
-  } else if (typeof obj === 'undefined' || obj === null) {
+  if (typeof obj === 'undefined' || obj === null) {
     return hash(NIL_STRING, Buffer.alloc(0))
   } else if (typeof obj === 'boolean') {
     return hash(BOOLEAN_STRING, Buffer.from((obj ? '1' : '0'), 'utf8'))

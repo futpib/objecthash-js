@@ -74,11 +74,3 @@ test('mix of all types', function (t) {
   t.equal(objectHash(["foo", {"b4r": ["baz", null, 1, 1.5, 0.0001, 1000, 2, -23.1234, 2]}]).toString('hex'), '7e01f8b45da35386e4f9531ff1678147a215b8d2b1d047e690fd9ade6151e431')
 })
 
-test('redacted', function (t) {
-  t.plan(3)
-
-  t.equal(objectHash(["foo", "**REDACTED**96e2aab962831956c80b542f056454be411f870055d37805feb3007c855bd823"]).toString('hex'), '783a423b094307bcb28d005bc2f026ff44204442ef3513585e7e73b66e3c2213')
-  t.equal(objectHash(["foo", {"bar": ["**REDACTED**82f70430fa7b78951b3c4634d228756a165634df977aa1fada051d6828e78f30", null, 1.0, 1.5, "**REDACTED**1195afc7f0b70bb9d7960c3615668e072a1cbfbbb001f84871fd2e222a87be1d", 1000.0, 2.0, -23.1234, 2.0]}]).toString('hex'), '783a423b094307bcb28d005bc2f026ff44204442ef3513585e7e73b66e3c2213')
-  t.equal(objectHash(["foo", {"**REDACTED**e303ce0bd0f4c1fdfe4cc1e837d7391241e2e047df10fa6101733dc120675dfe": ["baz", null, 1.0, 1.5, 0.0001, 1000.0, 2.0, -23.1234, 2.0]}]).toString('hex'), '783a423b094307bcb28d005bc2f026ff44204442ef3513585e7e73b66e3c2213')
-})
-
