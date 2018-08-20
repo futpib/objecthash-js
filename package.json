@@ -1,5 +1,5 @@
 {
-  "name": "objecthash",
+  "name": "@futpib/objecthash",
   "version": "1.0.2",
   "description": "JS implementation of Ben Laurie's objecthash (https://github.com/benlaurie/objecthash)",
   "repository": {
